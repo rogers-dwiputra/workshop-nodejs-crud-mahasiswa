@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Workshop CRUD Data Mahasiswa</title>
+    </head>
+    <body>
+        <h1>Aplikasi CRUD Data Mahasiswa Testing</h1>
+        <h3>Form Create</h3>
+        <form action="/mahasiswa" method="POST">
+            <input type="text" placeholder="NIM" name="nim"/>
+            <input type="text" placeholder="Nama Mahasiswa" name="nama"/>
+
+            <button type="submit">Submit</button>
+        </form>
+        <hr/>
+        <h3>Form Edit</h3>
+        <form>
+            <input type="text" placeholder="NIM" name="nim" id="nim"/>
+            <input type="text" placeholder="Nama Mahasiswa" name="nama" id="nama"/>
+            <input type="hidden" name="id" id="id"/>
+
+            <button type="button" id="updatebtn">Submit</button>
+        </form>
+        <hr/>
+        <ul>
+            <% for(var i=0; i < mahasiswa.length; i++) { %>
+                <li>
+                    <span><%= mahasiswa[i].nim %></span>
+                    <span><%= mahasiswa[i].nama %></span>
+                    <span><button type="button" class="editbtn" data-id="<%= mahasiswa[i]._id %>" data-nim="<%= mahasiswa[i].nim %>" data-nama="<%= mahasiswa[i].nama %>">Edit</button></span>
+                    <span><button type="button" class="deletebtn" data-id="<%= mahasiswa[i]._id %>">Delete</button></span>
+                </li>
+            <% } %>
+        </ul>
+        <script src="/main.js"></script>
+    </body>
+</html>
